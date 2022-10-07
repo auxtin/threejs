@@ -61,6 +61,10 @@ const ambientLight = new THREE.AmbientLight(0x333333);
 scene.add(ambientLight);
 const directionalLight = new THREE.DirectionalLight(0xFFFFFF,0.8);
 scene.add(directionalLight);
+directionalLight.position.set(-30, 50, 0);
+// light helpers
+const dLightHelper = new THREE.DirectionalLightHelper(directionalLight,5);
+scene.add(dLightHelper);
 // GUI
 // slider for adjusting sphere color
 const gui = new dat.GUI();
@@ -77,6 +81,7 @@ gui.add(options,'wireframe').onChange(function(e) {
     sphere.material.wireframe = e;
 })
 gui.add(options,'speed',0, 0.1);
+
 
 let step = 0;
 // create + add sus
