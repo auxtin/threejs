@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { AmbientLight, DoubleSide, TetrahedronGeometry } from 'three';
+import { AmbientLight, DirectionalLightHelper, DoubleSide, TetrahedronGeometry } from 'three';
 import * as dat from 'dat.gui';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -65,9 +65,12 @@ const directionalLight = new THREE.DirectionalLight(0xFFFFFF,0.8);
 scene.add(directionalLight);
 directionalLight.position.set(-30, 50, 0);
 directionalLight.castShadow=true;
+directionalLight.shadow.camera.bottom = -12
 // light helpers
 const dLightHelper = new THREE.DirectionalLightHelper(directionalLight,5);
 scene.add(dLightHelper);
+const dLightShadowHelper = new THREE.CameraHelper(directionalLight.shadow.camera);
+scene.add(dLightShadowHelper);
 // GUI
 // slider for adjusting sphere color
 const gui = new dat.GUI();
