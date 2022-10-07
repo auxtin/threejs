@@ -29,8 +29,14 @@ orbit.update();
 const boxGeometry = new THREE.BoxGeometry();
 const boxMaterial = new THREE.MeshBasicMaterial({color:0x00FF00});
 const box = new THREE.Mesh(boxGeometry,boxMaterial);
-scene.add(box)
-;
+scene.add(box);
+
+// create + add plane
+const planeGeometry = new THREE.PlaneGeometry(30,30);
+const planeMaterial = new THREE.MeshBasicMaterial({color: 0xFFFFFF});
+const plane = new THREE.Mesh(planeGeometry,planeMaterial);
+scene.add(plane);
+
 // create + add sus
 // let sus;
 // const glftLoader = new GLTFLoader();
