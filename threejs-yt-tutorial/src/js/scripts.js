@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { DoubleSide } from 'three';
+import { DoubleSide, TetrahedronGeometry } from 'three';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -44,6 +44,16 @@ plane.rotation.x = Math.PI * -0.5;
 
 const gridHelper = new THREE.GridHelper(30);
 scene.add(gridHelper);
+
+// create + add sphere
+const sphereGeometry = new THREE.SphereGeometry(4,100,100);
+const sphereMaterial = new THREE.MeshBasicMaterial({
+    color: 0x0000FF,
+    wireframe: true
+    }
+);
+const sphere = new THREE.Mesh(sphereGeometry,sphereMaterial);
+scene.add(sphere);
 
 // create + add sus
 // let sus;
