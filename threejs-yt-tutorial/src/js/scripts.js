@@ -55,13 +55,19 @@ const sphere = new THREE.Mesh(sphereGeometry,sphereMaterial);
 scene.add(sphere);
 
 sphere.position.set(-10,10,0)
-
+// GUI
+// slider for adjusting sphere color
 const gui = new dat.GUI();
 const options = {
-    sphereColor: '#ffea00'
+    sphereColor: '#ffea00',
+    wireframe: false
 }
 gui.addColor(options,'sphereColor').onChange(function(e) {
     sphere.material.color.set(e)
+})
+
+gui.add(options,'wireframe').onChange(function(e) {
+    sphere.material.wireframe = e;
 })
 // create + add sus
 // let sus;
