@@ -5,6 +5,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 const renderer = new THREE.WebGLRenderer();
+renderer.shadowMap.enabled = true;
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement); 
 
@@ -40,6 +41,7 @@ const planeMaterial = new THREE.MeshStandardMaterial({
 const plane = new THREE.Mesh(planeGeometry,planeMaterial);
 scene.add(plane);
 plane.rotation.x = Math.PI * -0.5;
+plane.receiveShadow = true;
 
 const gridHelper = new THREE.GridHelper(30);
 scene.add(gridHelper);
@@ -53,8 +55,8 @@ const sphereMaterial = new THREE.MeshStandardMaterial({
 );
 const sphere = new THREE.Mesh(sphereGeometry,sphereMaterial);
 scene.add(sphere);
-
 sphere.position.set(-10,10,0)
+sphere.castShadow=true;
 
 // lighting
 const ambientLight = new THREE.AmbientLight(0x333333);
@@ -62,6 +64,7 @@ scene.add(ambientLight);
 const directionalLight = new THREE.DirectionalLight(0xFFFFFF,0.8);
 scene.add(directionalLight);
 directionalLight.position.set(-30, 50, 0);
+directionalLight.castShadow=true;
 // light helpers
 const dLightHelper = new THREE.DirectionalLightHelper(directionalLight,5);
 scene.add(dLightHelper);
