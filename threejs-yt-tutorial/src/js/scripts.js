@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { DoubleSide, TetrahedronGeometry } from 'three';
-
+import * as dat from 'dat.gui';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
@@ -15,7 +15,6 @@ const camera = new THREE.PerspectiveCamera(
     0.1,
     1000
 );
-
 
 // HELPERS
 const orbit = new OrbitControls(camera,renderer.domElement);
@@ -49,12 +48,21 @@ scene.add(gridHelper);
 const sphereGeometry = new THREE.SphereGeometry(4,100,100);
 const sphereMaterial = new THREE.MeshBasicMaterial({
     color: 0x0000FF,
-    wireframe: true
+    wireframe: false
     }
 );
 const sphere = new THREE.Mesh(sphereGeometry,sphereMaterial);
 scene.add(sphere);
 
+sphere.position.set(-10,10,0)
+
+const gui = new dat.GUI();
+const options = {
+    sphereColor: '#ffea00'
+}
+gui.addColor(options,'sphereColor').onChange(function(e) {
+    sphere.material.color.set(e)
+})
 // create + add sus
 // let sus;
 // const glftLoader = new GLTFLoader();
