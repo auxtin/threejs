@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { DoubleSide, TetrahedronGeometry } from 'three';
+import { AmbientLight, DoubleSide, TetrahedronGeometry } from 'three';
 import * as dat from 'dat.gui';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -33,7 +33,7 @@ scene.add(box);
 
 // create + add plane
 const planeGeometry = new THREE.PlaneGeometry(30,30);
-const planeMaterial = new THREE.MeshBasicMaterial({
+const planeMaterial = new THREE.MeshStandardMaterial({
     color: 0xFFFFFF,
     side: DoubleSide
 });
@@ -46,7 +46,7 @@ scene.add(gridHelper);
 
 // create + add sphere
 const sphereGeometry = new THREE.SphereGeometry(4,100,100);
-const sphereMaterial = new THREE.MeshBasicMaterial({
+const sphereMaterial = new THREE.MeshStandardMaterial({
     color: 0x0000FF,
     wireframe: false
     }
@@ -55,6 +55,12 @@ const sphere = new THREE.Mesh(sphereGeometry,sphereMaterial);
 scene.add(sphere);
 
 sphere.position.set(-10,10,0)
+
+// lighting
+const ambientLight = new THREE.AmbientLight(0x333333);
+scene.add(ambientLight);
+const directionalLight = new THREE.DirectionalLight(0xFFFFFF,0.8);
+scene.add(directionalLight);
 // GUI
 // slider for adjusting sphere color
 const gui = new dat.GUI();
