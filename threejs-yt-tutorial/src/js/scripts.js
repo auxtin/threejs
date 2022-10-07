@@ -36,6 +36,10 @@ const planeGeometry = new THREE.PlaneGeometry(30,30);
 const planeMaterial = new THREE.MeshBasicMaterial({color: 0xFFFFFF});
 const plane = new THREE.Mesh(planeGeometry,planeMaterial);
 scene.add(plane);
+plane.rotation.x = Math.PI * -0.5;
+
+const gridHelper = new THREE.GridHelper(30);
+scene.add(gridHelper);
 
 // create + add sus
 // let sus;
