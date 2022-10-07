@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { DoubleSide } from 'three';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -33,7 +34,10 @@ scene.add(box);
 
 // create + add plane
 const planeGeometry = new THREE.PlaneGeometry(30,30);
-const planeMaterial = new THREE.MeshBasicMaterial({color: 0xFFFFFF});
+const planeMaterial = new THREE.MeshBasicMaterial({
+    color: 0xFFFFFF,
+    side: DoubleSide
+});
 const plane = new THREE.Mesh(planeGeometry,planeMaterial);
 scene.add(plane);
 plane.rotation.x = Math.PI * -0.5;
